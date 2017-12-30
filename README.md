@@ -27,7 +27,7 @@ Once the root container is running and user has access to the console/shell we c
 The ctool user program is responsible for controlling how each container behaves as well as the resources that are allocated to it.  
 ctool uses system calls that we have implemented in order to create container resources safely using the kernel.
 
-##### Create Container:  
+#### Create Container:  
 ```
 $ ctool create <name> [<path> ...]
 ```
@@ -35,7 +35,7 @@ Creates a container
 name - desired name of container  
 path - path(s) to programs that the user would like to copy to the child container  
 
-##### Start Container:  
+#### Start Container:  
 ```
 $ ctool start <name> [-p <max_proc>] [-m <max_mem>] [-d <max_disk>] <prog> [<arg1> ...]
 ```
@@ -47,22 +47,22 @@ Flags:
 
 prog - program to start within container followed by its arguments
 
-##### Pause Container:  
+#### Pause Container:  
 ```
 $ ctool pause <name>
 ```
 
-##### Resume Container:  
+#### Resume Container:  
 ```
 $ ctool resume <name>
 ```
 
-##### Stop Container:  
+#### Stop Container:  
 ```
 $ ctool stop <name>
 ```
 
-##### View Container Information:  
+#### View Container Information:  
 ```
 $ ctool info
 ```
