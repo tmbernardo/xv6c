@@ -1,43 +1,64 @@
+# xv6c  
+A simple container for the xv6 operating system by MIT  
+Can currently only be run on a raspberry pi.
 
-## Project 4 Tests
+Authors: Matthew Bernardo && Brian Bushree  
 
+## Root Container  
+Once xv6 is run in qemu a root container is created which initializes the xv6 OS.  
+The root container is monolithic as it has the ability to create, manipulate and monitor "child" containers along with xv6 system resources.  
 
-### ISOLATION TESTS
+## Child Container  
+Child containers are completely isolated and can only operate within its own scope.
+In order to do this we needed to implement proper system isolation.
 
-#### scheduler test:
-ctool create s1 sh ls cat schedtest kill ps
-ctool start s1 sh
-schedtest 2 1000
-ctrl-t
-schedtest 1 1000
-cat sched.out (both consoles)
+## USAGE  
+#### Run Qemu  
+```
+$ make qemu
+```
+This will run xv6 and start a root container for the user  
+Once the root container is running and user has access to the console/shell we can start creating containers using the container tools.
 
-#### process isolation test:
-(in root)
-ps (get PID of process in root)
-ctrl-t
-kill <PID>
-ctrl-t
-ps (show process is alive)
+#### Container Tools  
+The ctool user program is responsible for controlling how each container behaves as well as the resources that are allocated to it.  
+ctool uses system calls that we have implemented in order to create container resources safely using the kernel.
 
-FS isolation test:
-(make sure were in container s1)
-cd ..
-ls
+##### Create Container  
+```
+ctool create <name> [<path> ...]
+```
+Creates a container
+name - desired name of container  
+path - path(s) to programs that the user would like to copy to the child container  
 
-### RESOURCE LIMIT TESTS
+##### Start Container  
+```
+ctool start <name> [-p <max_proc>] [-m <max_mem>] [-d <max_disk>] <prog> [<arg1> ...]
+```
 
-#### forkbomb test:
-ctool create c1 sh forkbomb membomb diskbomb
-ctool start c1 -m 50000000 sh
-forkbomb
+##### Pause Container  
+```
+ctool start <name> [-p <max_proc>] [-m <max_mem>] [-d <max_disk>] <prog> [<arg1> ...]
+```
 
-#### membomb test:
-ctool start c1 -m 50000000 sh
-membomb
+##### Resume Container  
+```
+ctool start <name> [-p <max_proc>] [-m <max_mem>] [-d <max_disk>] <prog> [<arg1> ...]
+```
 
-#### diskbomb test:
-ctool start c1 -m 50000000 -d 15000
-diskbomb
+##### Stop Container  
+```
+ctool stop <name> [-p <max_proc>] [-m <max_mem>] [-d <max_disk>] <prog> [<arg1> ...]
+```
 
+##### Stop Container  
+```
+ctool stop <name> [-p <max_proc>] [-m <max_mem>] [-d <max_disk>] <prog> [<arg1> ...]
+```
+
+##### View Container Information  
+```
+ctool info
+```
 
