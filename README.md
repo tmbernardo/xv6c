@@ -29,7 +29,7 @@ ctool uses system calls that we have implemented in order to create container re
 
 ##### Create Container:  
 ```
-ctool create <name> [<path> ...]
+$ ctool create <name> [<path> ...]
 ```
 Creates a container
 name - desired name of container  
@@ -37,7 +37,7 @@ path - path(s) to programs that the user would like to copy to the child contain
 
 ##### Start Container:  
 ```
-ctool start <name> [-p <max_proc>] [-m <max_mem>] [-d <max_disk>] <prog> [<arg1> ...]
+$ ctool start <name> [-p <max_proc>] [-m <max_mem>] [-d <max_disk>] <prog> [<arg1> ...]
 ```
 Start a created container
 Flags:
@@ -49,21 +49,21 @@ prog - program to start within container followed by its arguments
 
 ##### Pause Container:  
 ```
-ctool pause <name>
+$ ctool pause <name>
 ```
 
 ##### Resume Container:  
 ```
-ctool resume <name>
+$ ctool resume <name>
 ```
 
 ##### Stop Container:  
 ```
-ctool stop <name>
+$ ctool stop <name>
 ```
 
 ##### View Container Information:  
 ```
-ctool info
+$ ctool info
 ```
 
