@@ -9,10 +9,10 @@ The root container is monolithic as it has the ability to create, manipulate and
 
 ## Child Container  
 Child containers are completely isolated and can only operate within its own scope.
-In order to do this we needed to implement proper system isolation for containers which includes:
-    - Process Isolation (processes in a container cannot access/kill processes in another container)  
-    - File System Isolation (cannot access files in another container)  
-    - Memory Isolation (cannot access memory that belongs to another container)  
+In order to do this we needed to implement proper system isolation for containers which includes:  
+  * Process Isolation (processes in a container cannot access/kill processes in another container)  
+  * File System Isolation (cannot access files in another container)  
+  * Memory Isolation (cannot access memory that belongs to another container)  
 
 ## USAGE  
 ### Qemu  
