@@ -1,8 +1,7 @@
 # xv6c  
+##### Authors: Matthew Bernardo && Brian Bushree  
 A simple container for the xv6 operating system by MIT  
 Can currently only be run on a raspberry pi.
-
-### Authors: Matthew Bernardo && Brian Bushree  
 
 ## Root Container  
 Once xv6 is run in qemu a root container is created which initializes the xv6 OS.  
@@ -10,10 +9,10 @@ The root container is monolithic as it has the ability to create, manipulate and
 
 ## Child Container  
 Child containers are completely isolated and can only operate within its own scope.
-In order to do this we needed to implement proper system isolation which includes:
-    - Process Isolation
-    - File System Isolation
-    - Memory Isolation
+In order to do this we needed to implement proper system isolation for containers which includes:
+    - Process Isolation (processes in a container cannot access/kill processes in another container)  
+    - File System Isolation (cannot access files in another container)  
+    - Memory Isolation (cannot access memory that belongs to another container)  
 
 ## USAGE  
 ### Qemu  
